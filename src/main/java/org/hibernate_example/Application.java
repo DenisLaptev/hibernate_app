@@ -1,17 +1,17 @@
 package org.hibernate_example;
 
-import org.hibernate_example.model.Item;
-import org.hibernate_example.model.Person;
-
-import java.util.List;
+import org.hibernate_example.service.CitizenService;
+import org.hibernate_example.service.PersonService;
 
 public class Application {
 
     private static PersonService personService;
+    private static CitizenService citizenService;
 
     public static void main(String[] args) {
 
         personService = new PersonService();
+        citizenService = new CitizenService();
 
         /*
         //Read
@@ -57,8 +57,16 @@ public class Application {
 
 
         personService.changeOwnerForItem(4, 5);
-        */
+
 
         personService.cascadeMethod();
+        */
+
+
+        citizenService.create();
+
+        citizenService.readByCitizenId(1);
+        citizenService.readByPassportId(1);
+
     }
 }

@@ -1,4 +1,4 @@
-package org.hibernate_example;
+package org.hibernate_example.service;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,9 +12,6 @@ import java.util.List;
 
 public class PersonService {
 
-
-    public PersonService() {
-    }
 
     public void create(Person person) {
         Configuration configuration = new Configuration()
