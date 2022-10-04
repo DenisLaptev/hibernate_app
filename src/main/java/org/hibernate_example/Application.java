@@ -1,28 +1,64 @@
 package org.hibernate_example;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate_example.model.Item;
 import org.hibernate_example.model.Person;
+
+import java.util.List;
 
 public class Application {
 
+    private static PersonService personService;
+
     public static void main(String[] args) {
-        Configuration configuration = new Configuration().addAnnotatedClass(Person.class);
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
+        personService = new PersonService();
 
-        try {
-            session.beginTransaction();
+        /*
+        //Read
+        Person person = personService.read(1);
+        System.out.println(person);
 
-            Person person = session.get(Person.class, 1);
-            System.out.println(person);
+        //ReadAll
+        List<Person> personList = personService.readAll();
+        System.out.println(personList);
 
-            session.getTransaction().commit();
+        //ReadAllByAge
+        List<Person> personListByAge = personService.readAllByAge(30);
+        System.out.println(personListByAge);
 
-        } finally {
-            sessionFactory.close();
-        }
+        //Create
+        Person person1 = new Person("Test1", 30);
+        Person person2 = new Person("Test2", 40);
+        Person person3 = new Person("Test3", 50);
+
+        personService.create(person1);
+        personService.create(person2);
+        personService.create(person3);
+
+        //Update
+        personService.update(2);
+
+        //Delete
+        personService.delete(3);
+         */
+
+        /*
+        List<Item> items = personService.readItemsOfPerson(3);
+
+        Person owner = personService.readOwnerOfItem(10);
+
+        personService.addItemForOwner(2);
+
+        personService.createNewPersonWithNewItem();
+
+        personService.deleteAllItemsOfPerson(1);
+        personService.deletePerson(2);
+
+
+
+        personService.changeOwnerForItem(4, 5);
+        */
+
+        personService.cascadeMethod();
     }
 }
